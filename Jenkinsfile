@@ -1,24 +1,20 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/raiyammca12/myrepos.git',
+                        credentialsId: 'github-credentials'
+                    ]]
+                ])
             }
         }
-
         stage('Build') {
             steps {
-                echo 'Building...'
-                // e.g., sh 'make build' or 'npm install'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                // e.g., sh 'npm test'
+                echo "Building..."
             }
         }
     }
