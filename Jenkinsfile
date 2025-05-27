@@ -7,7 +7,7 @@ pipeline {
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/raiyammca12/myrepos.git',
-                        credentialsId: 'github-credentials'
+                        credentialsId: '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'
                     ]]
                 ])
             }
